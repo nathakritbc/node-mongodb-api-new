@@ -2,11 +2,8 @@ const db = require("../models");
 const Product = db.products;
 
 const constants = require("../constants");
-const formidable = require("formidable");
-const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
 
-const fse = require("fs-extra");
+const fs = require("fs");
 
 const removeImage = async (path) => {
   await fs.unlinkSync(path, (err) => {

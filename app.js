@@ -6,8 +6,10 @@ const logger = require("morgan");
 const cors = require("cors");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users.routes");
+const bookTypeRouter = require("./routes/bookType.routes");
 const uploadRouter = require("./routes/upload.routes");
 const productsRouter = require("./routes/product.routes");
+const BooksRouter = require("./routes/book.routes");
 const authRouter = require("./routes/auth.routes");
 const passport = require("passport");
 
@@ -55,6 +57,18 @@ app.use(
   "/api/v1/users",
   passport.authenticate("jwt", { session: false }),
   usersRouter
+);
+
+app.use(
+  "/api/v1/booksTypes",
+  passport.authenticate("jwt", { session: false }),
+  bookTypeRouter
+);
+
+app.use(
+  "/api/v1/books",
+  passport.authenticate("jwt", { session: false }),
+  BooksRouter
 );
 
 app.use(
